@@ -21,7 +21,7 @@ public class ProductController {
         return "Welcome to the Coffee Shop!";
     }
 
-    @RequestMapping("/")
+    @RequestMapping("/list")
     @ResponseBody
     public String listProducts(){
         String productDisplay = "<strong> Product list </strong><hr>";
