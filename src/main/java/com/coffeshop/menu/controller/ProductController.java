@@ -2,6 +2,7 @@ package com.coffeshop.menu.controller;
 
 import com.coffeshop.menu.model.Product;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -20,6 +21,8 @@ public class ProductController {
         return "Welcome to the Coffee Shop!";
     }
 
+    @RequestMapping("/")
+    @ResponseBody
     public String listProducts(){
         String productDisplay = "<strong> Product list </strong><hr>";
         for (Product p : productList){
@@ -28,5 +31,19 @@ public class ProductController {
             productDisplay += productInfo;
         }
         return productDisplay;
+    }
+
+    @RequestMapping("details/{id}")
+    @ResponseBody
+    public String getProductDetailsById(@PathVariable int id){
+        for (Product p: productList){
+            if (p.getId() == id){
+                return "<strong>Requested PRoduct Details:</strong><hr>" +
+                        "Product ID: " + p.getId() +
+                        " Product Name: " + p.getProductName() +
+                        " Price: " + p.getPrice();
+            }
+        }
+        return "Product not found";
     }
 }
