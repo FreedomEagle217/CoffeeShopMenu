@@ -1,4 +1,4 @@
-package com.coffeshop.menu;
+package com.coffeshop.menu.model;
 
 public class Product {
     private int id;
