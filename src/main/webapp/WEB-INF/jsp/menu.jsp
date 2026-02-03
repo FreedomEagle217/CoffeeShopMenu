@@ -4,6 +4,7 @@
     <head>
         <meta charset = "UTF-8">
         <title>Coffee Shop Menu</title>
+        <link rel = "stylesheet" href = "/css/styles.css">
     </head>
     <body>
         <h1>Welcome to our Coffee Shop</h1>
