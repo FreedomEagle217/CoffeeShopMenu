@@ -1,4 +1,4 @@
-<%@ taglib prefix = "c" uri = "jakarta.tags.core">
+<%@ taglib prefix = "c" uri = "jakarta.tags.core" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -14,7 +14,7 @@
                 <th>Product Name</th>
                 <th>Price</th>
             </tr>
-            <c:forEach var="product" items="${productList}">
+            <c:forEach var="product" items="${products}">
                 <tr>
                     <td>${product.id}</td>
                     <td>${product.productName}</td>

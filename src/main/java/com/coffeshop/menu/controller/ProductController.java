@@ -24,7 +24,7 @@ public class ProductController {
     }
 
     @RequestMapping("/list")
-    @ResponseBody
+    //@ResponseBody     No longer needed
     public String listProducts(Model productListModel){
         productListModel.addAttribute("products", productList);
         return "menu";
@@ -35,7 +35,7 @@ public class ProductController {
     public String getProductDetailsById(@PathVariable int id){
         for (Product p: productList){
             if (p.getId() == id){
-                return "<strong>Requested PRoduct Details:</strong><hr>" +
+                return "<strong>Requested Product Details:</strong><hr>" +
                         "Product ID: " + p.getId() +
                         " Product Name: " + p.getProductName() +
                         " Price: " + p.getPrice();
