@@ -15,6 +15,7 @@ public class ProductController {
             new Product(1, "Cappucino", 7.50f),
             new Product(2, "Macha", 8.00f),
             new Product(3, "Frappucino", 8.50f));
+
     @RequestMapping("/")
     @ResponseBody
     public String home(){

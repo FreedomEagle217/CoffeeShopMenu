@@ -1,0 +1,26 @@
+<%@ taglib prefix = "c" uri = "jakarta.tags.core">
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset = "UTF-8">
+        <title>Coffee Shop Menu</title>
+    </head>
+    <body>
+        <h1>Welcome to our Coffee Shop</h1>
+        <h2>Our Menu</h2>
+        <table>
+            <tr>
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Price</th>
+            </tr>
+            <c:forEach var="product" items="${productList}">
+                <tr>
+                    <td>${product.id}</td>
+                    <td>${product.productName}</td>
+                    <td>${product.price}</td>
+                </tr>
+            </c:forEach>
+        </table>
+    </body>
+</html>
