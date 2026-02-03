@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import org.springframework.ui.Model;
 
 @Controller
 @RequestMapping("/products")
@@ -24,14 +25,9 @@ public class ProductController {
 
     @RequestMapping("/list")
     @ResponseBody
-    public String listProducts(){
-        String productDisplay = "<strong> Product list </strong><hr>";
-        for (Product p : productList){
-            String productInfo = " " + p.getId() + " " + p.getProductName() +
-                                " " + p.getPrice() + "\n";
-            productDisplay += productInfo;
-        }
-        return productDisplay;
+    public String listProducts(Model productListModel){
+        productListModel.addAttribute("products", productList);
+        return "menu";
     }
 
     @RequestMapping("details/{id}")
@@ -47,4 +43,5 @@ public class ProductController {
         }
         return "Product not found";
     }
+    
 }
