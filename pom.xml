@@ -35,9 +35,7 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-			<version>3.5.3</version>
 		</dependency>
-
 
 		<dependency>
 			<groupId>org.glassfish.web</groupId>
@@ -50,6 +48,7 @@
 			<artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
 			<version>3.0.2</version>
 		</dependency>
+
 
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
