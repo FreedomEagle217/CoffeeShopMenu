@@ -11,6 +11,14 @@ public class Product {
         this.price = price;
     }
 
+
+    public Product() {
+
+        // Left intentionally blank since POST method in Controller
+        // (ie, showProductForm() ) fills with the info
+    }
+
+
     public int getId() {
         return id;
     }
