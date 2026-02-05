@@ -1,10 +1,14 @@
 package com.coffeshop.menu.controller;
 
 import com.coffeshop.menu.model.Product;
+import com.coffeshop.menu.service.ProductService;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
@@ -14,24 +18,40 @@ import org.springframework.ui.Model;
 @Controller
 @RequestMapping("/products")
 public class ProductController {
-    private List<Product> productList = new ArrayList<>(List.of(
-            new Product(1, "Cappucino", 7.50f),
-            new Product(2, "Macha", 8.00f),
-            new Product(3, "Frappucino", 8.50f)));
+    @Autowired
+    private ProductService productService;
 
-    @RequestMapping("/")
-    @ResponseBody
-    public String home(){
-        return "Welcome to the Coffee Shop!";
+
+    @GetMapping("/")
+    public String viewHomePage(Model model){
+        model.addAttribute("listProducts", productService.getAllProducts());
+        return "menu";
     }
 
+    @GetMapping
+    public String showNewProductForm(Model model){
+        Product product = new Product();
+        model.addAttribute("product", product);
+        return "add-new-product";
+    }
+
+    @PostMapping
+    public String saveProduct(@ModelAttribute("product") Product product){
+        productService.saveProduct(product);
+        return "redirect:/products/";
+    }
+
+
+    /*          No longer needed method. The above uses JPA
     @RequestMapping("/list")
     //@ResponseBody     No longer needed
     public String listProducts(Model productListModel){
         productListModel.addAttribute("products", productList);
         return "menu";
     }
+    */
 
+    /*      Maybe this will be implemented later
     @RequestMapping("details/{id}")
     @ResponseBody
     public String getProductDetailsById(@PathVariable int id){
@@ -45,7 +65,9 @@ public class ProductController {
         }
         return "Product not found";
     }
+    */
 
+    /*      Old methods
     @RequestMapping("/add")
     public String showProductForm(Model productAddFormModel){
         productAddFormModel.addAttribute("product", new Product());
@@ -58,5 +80,5 @@ public class ProductController {
         System.out.print(productList);
         return "redirect:/products/list";
     }
-    
+    */
 }
